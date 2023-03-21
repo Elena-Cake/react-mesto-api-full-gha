@@ -1,0 +1,6 @@
+.popup__container_place_foto {
+    width: auto;
+    position: relative;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}

@@ -1,0 +1,17 @@
+.navbar__burger {
+    display: none;
+    grid-area: btn;
+    background-color: inherit;
+    border: 0;
+    transition: opacity .5s ease;
+}
+
+.navbar__burger:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 640px) {
+    .navbar__burger {
+        display: block;
+    }
+}

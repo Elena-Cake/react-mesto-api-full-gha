@@ -1,0 +1,15 @@
+.popup__status-text {
+    padding: 6px 0;
+    margin: 0 auto 18px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+@media screen and (max-width: 640px) {
+    .popup__status-text {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

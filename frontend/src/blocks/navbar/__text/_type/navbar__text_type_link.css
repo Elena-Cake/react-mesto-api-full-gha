@@ -1,0 +1,7 @@
+.navbar__text_type_link {
+    transition: opacity .5s ease;
+}
+
+.navbar__text_type_link:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,14 @@
+.navbar__user {
+    display: flex;
+    grid-area: user;
+}
+
+@media screen and (max-width: 640px) {
+    .navbar__user {
+        min-height: 142px;
+        text-align: center;
+        width: 100%;
+        display: block;
+
+    }
+}

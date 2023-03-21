@@ -1,0 +1,21 @@
+.navbar__close-btn {
+    grid-area: btn;
+    display: none;
+    width: 40px;
+    font-size: 26px;
+    font-weight: 900;
+    background-color: inherit;
+    border: 0;
+    color: rgb(255, 255, 255);
+    transition: opacity .5s ease;
+}
+
+.navbar__close-btn:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 640px) {
+    .navbar__close-btn {
+        display: block;
+    }
+}
