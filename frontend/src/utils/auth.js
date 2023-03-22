@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.svesha.nomoredomains.work/';
+export const BASE_URL = 'https://api.svesha.nomoredomains.work/';
 
 function checkResponse(res) {
     if (res.ok) {
