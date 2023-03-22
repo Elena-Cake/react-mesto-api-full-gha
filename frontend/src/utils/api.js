@@ -91,6 +91,7 @@ class Api {
 }
 
 export const api = new Api({
+    // baseUrl: 'http://localhost:3000/',
     baseUrl: 'http://api.svesha.nomoredomains.work/',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,

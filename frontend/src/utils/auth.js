@@ -1,3 +1,4 @@
+// export const BASE_URL = 'http://http://localhost:3000/';
 export const BASE_URL = 'http://api.svesha.nomoredomains.work/';
 
 function checkResponse(res) {
