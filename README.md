@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.11.165
+IP 158.160.59.193
 
 Frontend https://svesha.nomoredomains.work/
 
