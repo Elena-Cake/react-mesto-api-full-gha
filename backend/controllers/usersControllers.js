@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const { CodeStatus } = require('../constans/CodeStatus');
 const User = require('../models/user');
-const { JWT_SECRET } = require('../config');
+const { JWT_SECRET, NODE_ENV } = require('../config');
 const UnderfinedError = require('../errors/Underfined');
 const NoValidateError = require('../errors/NoValidate');
 const ConflictError = require('../errors/Conflict');
@@ -158,7 +158,11 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jsonwebtoken.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+      const token = jsonwebtoken.sign(
+        { _id: user._id },
+        NODE_ENV !== 'production' ? 'dev-secret' : JWT_SECRET,
+        { expiresIn: '7d' },
+      );
       res.send({ token, message: 'Пользователь зарегестрирован' });
     })
     .catch(next);
