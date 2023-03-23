@@ -5,6 +5,12 @@ const cardRoutes = require('./card');
 const { createUser, login } = require('../controllers/usersControllers');
 const UnderfinedError = require('../errors/Underfined');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.post(
   '/signup',
   celebrate({
