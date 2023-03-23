@@ -32,17 +32,14 @@ const getCards = (req, res, next) => {
 
 // POST http://localhost:3001/cards/
 const createCard = (req, res, next) => {
-  console.log('in create');
   const { name, link } = req.body;
   Card
     .create({ name, link, owner: req.user._id })
     .then((card) => {
-      console.log('then');
       res.status(CodeStatus.CREATED.CODE)
         .send(createCardDTO(card));
     })
     .catch((err) => {
-      console.log('err');
       if (err instanceof mongoose.Error.ValidationError) {
         next(new NoValidateError());
         return;
