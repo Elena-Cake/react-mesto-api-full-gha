@@ -18,7 +18,6 @@ class Api {
     // загрузка данных пользователя
     startPageProfile() {
         return fetch(`${this._startRequest}users/me`, {
-            // headers: this._headers,
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
                 'Content-Type': 'application/json'
@@ -30,7 +29,6 @@ class Api {
     // запрос карточек с сервера
     startPageCards() {
         return fetch(`${this._startRequest}cards`, {
-            // headers: this._headers,
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
                 'Content-Type': 'application/json'
@@ -44,7 +42,10 @@ class Api {
         console.log(dataUser)
         return fetch(`${this._startRequest}users/me`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(dataUser)
         })
             .then(this._checkRes)
@@ -54,7 +55,10 @@ class Api {
     editUserAvatar(avatar) {
         return fetch(`${this._startRequest}users/me/avatar`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(avatar)
         })
             .then(this._checkRes)
@@ -64,7 +68,10 @@ class Api {
     sendCard = (dataCard) => {
         return fetch(`${this._startRequest}cards`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(dataCard)
         })
             .then(this._checkRes)
@@ -74,7 +81,10 @@ class Api {
     deleteCard = (idCard) => {
         return fetch(`${this._startRequest}cards/${idCard}`, {
             method: 'DELETE',
-            headers: this._headers
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkRes)
     }
@@ -83,7 +93,10 @@ class Api {
     sendLike = (idCard) => {
         return fetch(`${this._startRequest}cards/${idCard}/likes`, {
             method: 'PUT',
-            headers: this._headers
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkRes)
     }
@@ -92,7 +105,10 @@ class Api {
     deleteLike = (idCard) => {
         return fetch(`${this._startRequest}cards/${idCard}/likes`, {
             method: 'DELETE',
-            headers: this._headers
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkRes)
     }
@@ -101,8 +117,4 @@ class Api {
 export const api = new Api({
     baseUrl: 'https://api.svesha.nomoredomains.work/',
     // baseUrl: 'http://localhost:3000/',
-    headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-        'Content-Type': 'application/json'
-    }
 })
