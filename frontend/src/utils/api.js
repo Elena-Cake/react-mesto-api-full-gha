@@ -18,7 +18,11 @@ class Api {
     // загрузка данных пользователя
     startPageProfile() {
         return fetch(`${this._startRequest}users/me`, {
-            headers: this._headers,
+            // headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkRes)
     }
@@ -26,7 +30,11 @@ class Api {
     // запрос карточек с сервера
     startPageCards() {
         return fetch(`${this._startRequest}cards`, {
-            headers: this._headers,
+            // headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            }
         })
             .then(this._checkRes)
     }
@@ -92,6 +100,7 @@ class Api {
 
 export const api = new Api({
     baseUrl: 'https://api.svesha.nomoredomains.work/',
+    // baseUrl: 'http://localhost:3000/',
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'

@@ -35,6 +35,7 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card
     .create({ name, link, owner: req.user._id })
+    .populate(['owner', 'likes'])
     .then((card) => {
       res.status(CodeStatus.CREATED.CODE)
         .send(createCardDTO(card));

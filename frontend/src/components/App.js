@@ -35,6 +35,7 @@ function App() {
     const [infoToolText, setInfoToolText] = useState("");
     const [infoToolImageType, setInfoToolImageType] = useState("err");
     const [isShowUser, setIsShowUser] = useState(false);
+    const jwt = localStorage.getItem('jwt');
 
     // открытие попапов
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -105,6 +106,7 @@ function App() {
                 navigate('/', { replace: true });
                 setEmailUser(email)
             })
+            .then(() => pullInitialData())
             .catch((res) => {
                 setIsInfoTooltipOpen(true);
                 setIsSignIn(false);
@@ -115,13 +117,13 @@ function App() {
 
     // проверка токена
     useEffect(() => {
-        const jwt = localStorage.getItem('jwt')
         if (jwt) {
             checkToken(jwt)
                 .then((res) => {
                     if (res) {
                         setIsSignIn(true);
                         setEmailUser(res.email)
+                        pullInitialData()
                         navigate("/", { replace: true })
                     }
                 })
@@ -146,8 +148,8 @@ function App() {
     }, [isSignIn]);
 
     const pullInitialData = () => {
-        Promise.all([api.startPageProfile(), api.startPageCards()])
-            .then(([user, cards]) => {
+        Promise.all([api.startPageCards(), api.startPageProfile()])
+            .then(([cards, user]) => {
                 setCurrentUser(user)
                 setCards(cards)
             })
@@ -180,7 +182,8 @@ function App() {
     // лайк карточки
     function handleCardLike(card) {
         // Снова проверяем, есть ли уже лайк на этой карточке
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        console.log()
+        const isLiked = card.likes.some(_id => _id === currentUser._id);
 
         // Отправляем запрос в API и получаем обновлённые данные карточки
         !isLiked ?
