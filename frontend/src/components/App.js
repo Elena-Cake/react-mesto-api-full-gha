@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import '../index.css';
 
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 import Header from './Header/Header'
 import Main from './Main/Main'
@@ -291,8 +291,13 @@ function App() {
                             onCardDelete={handleCardDelete}
                             cards={cards}
                         />} />
-                    <Route path="/sign-up" element={<Register register={handleRegisterClick} />} />
-                    <Route path="/sign-in" element={<Login login={handleLoginClick} />} />
+                    <Route path="/signup" element={<Register register={handleRegisterClick} />} />
+                    <Route path="/signin" element={<Login login={handleLoginClick} />} />
+                    <Route path='*'
+                        element={
+                            isSignIn ? <Navigate to="/" /> : <Navigate to="/signin" />
+                        }
+                    />
                 </Routes>
 
                 <Footer />
