@@ -137,7 +137,7 @@ function App() {
     function signOut(e) {
         e.preventDefault();
         localStorage.removeItem("jwt");
-        navigate("/sign-in", { replace: false })
+        navigate("/signin", { replace: false })
     }
 
     // загрузка профиля и карточек при старте страницы
