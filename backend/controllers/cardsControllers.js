@@ -20,7 +20,7 @@ const createCardDTO = (card) => (
 const getCards = (req, res, next) => {
   Card
     .find({})
-    .populate(['owner', 'likes'])
+    .populate(['likes'])
     .then((cards) => {
       res.status(CodeStatus.OK.CODE)
         .send(
@@ -82,7 +82,7 @@ const likeCard = (req, res, next) => {
       { $addToSet: { likes: req.user._id } },
       { new: true },
     )
-    .populate('owner')
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new UnderfinedError('Карточка не найдена');
@@ -107,7 +107,7 @@ const dislikeCard = (req, res, next) => {
       { $pull: { likes: req.user._id } },
       { new: true },
     )
-    .populate('owner')
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new UnderfinedError('Карточка не найдена');

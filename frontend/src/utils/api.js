@@ -115,6 +115,6 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: 'https://api.svesha.nomoredomains.work/',
-    // baseUrl: 'http://localhost:3000/',
+    // baseUrl: 'https://api.svesha.nomoredomains.work/',
+    baseUrl: 'http://localhost:3000/',
 })
