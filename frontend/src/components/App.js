@@ -296,7 +296,8 @@ function App() {
                         />} />
                     <Route path='*'
                         element={
-                            isSignIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />
+                            <Login login={handleLoginClick} />
+                            // isSignIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />
                         }
                     />
                 </Routes>
