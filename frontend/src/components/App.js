@@ -151,7 +151,7 @@ function App() {
         Promise.all([api.startPageCards(), api.startPageProfile()])
             .then(([cards, user]) => {
                 setCurrentUser(user)
-                setCards(cards)
+                setCards(cards.reverse())
             })
             .catch((err) => {
                 console.log(err);
