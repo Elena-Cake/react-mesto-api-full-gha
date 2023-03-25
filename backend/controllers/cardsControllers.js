@@ -20,7 +20,7 @@ const createCardDTO = (card) => (
 const getCards = (req, res, next) => {
   Card
     .find({})
-    .populate(['likes'])
+    .populate(['owner', 'likes'])
     .then((cards) => {
       res.status(CodeStatus.OK.CODE)
         .send(
