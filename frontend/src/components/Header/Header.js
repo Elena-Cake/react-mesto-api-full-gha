@@ -7,15 +7,15 @@ function Header({ emailUser, signOut, showUser, openMenu, hideMenu }) {
     return (
         <header className="header">
             <Routes>
-                <Route path="/signup" element={
+                <Route path="/sign-up" element={
                     <div className='header__navigate'>
                         <img className="header__logo" src={logoPath} alt="логотип 'Место'" />
-                        <Link to={"/signin"} className="navbar__text navbar__text_type_link">Войти</Link>
+                        <Link to={"/sign-in"} className="navbar__text navbar__text_type_link">Войти</Link>
                     </div>} />
-                <Route path="/signin" element={
+                <Route path="/sign-in" element={
                     <div className='header__navigate'>
                         <img className="header__logo" src={logoPath} alt="логотип 'Место'" />
-                        <Link to={"/signup"} className="navbar__text navbar__text_type_link">Регистрация</Link>
+                        <Link to={"/sign-up"} className="navbar__text navbar__text_type_link">Регистрация</Link>
                     </div>} />
                 <Route path="/" element={
                     <div className='header__menu'>

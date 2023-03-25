@@ -137,7 +137,7 @@ function App() {
     function signOut(e) {
         e.preventDefault();
         localStorage.removeItem("jwt");
-        navigate("/signin", { replace: false })
+        navigate("/sign-in", { replace: false })
     }
 
     // загрузка профиля и карточек при старте страницы
@@ -281,6 +281,8 @@ function App() {
                     openMenu={openMenu} hideMenu={hideMenu} />
 
                 <Routes>
+                    <Route path="/sign-up" element={<Register register={handleRegisterClick} />} />
+                    <Route path="/sign-in" element={<Login login={handleLoginClick} />} />
                     <Route path="/" element={
                         <ProtectedRoute
                             component={Main} isSignIn={isSignIn}
@@ -291,11 +293,9 @@ function App() {
                             onCardDelete={handleCardDelete}
                             cards={cards}
                         />} />
-                    <Route path="/signup" element={<Register register={handleRegisterClick} />} />
-                    <Route path="/signin" element={<Login login={handleLoginClick} />} />
                     <Route path='*'
                         element={
-                            isSignIn ? <Navigate to="/" /> : <Navigate to="/signin" />
+                            isSignIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />
                         }
                     />
                 </Routes>
