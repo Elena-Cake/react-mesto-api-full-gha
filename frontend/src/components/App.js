@@ -264,6 +264,7 @@ function App() {
         setIsLoadingPlace(true)
         api.sendCard(values)
             .then((card) => {
+                console.log(card)
                 setCards([card, ...cards]);
                 setIsLoadingPlace(false)
                 closeAllPopups()
@@ -296,8 +297,7 @@ function App() {
                         />} />
                     <Route path='*'
                         element={
-                            <Login login={handleLoginClick} />
-                            // isSignIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />
+                            isSignIn ? <Navigate to="/" /> : <Navigate to="/sign-in" />
                         }
                     />
                 </Routes>
